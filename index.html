@@ -5,17 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISS Tracker</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src=" https://unpkg.com/@joergdietrich/leaflet.terminator/L.Terminator.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+   
     <link rel="stylesheet" href="/css/style.css"/>
+    <script defer src="/scripts/map.js"></script>
 </head>
 <body>
-    <div id="map"></div>
-    <script src="/scripts/map.js"></script>
+    <div class="flex flex-col bg-gray-950 h-screen text-gray-400">
+        <div id="map" class="w-screen h-[70vh] sm:h-[60vh] "></div>
+        <div id="info" class="font-sans overflow-y-auto scrollbar flex justify-center">
+            <table class="table-fixed border-collapse sm:w-1/4 w-screen">
+                <tbody>
+                    <tr class="odd:bg-gray-900/50 even:bg-gray-950">
+                        <th class="px-6 py-2 font-medium font-bold text-gray-300">Latitude</th>
+                        <td id="lat" class="px-6 py-2">Loading...</td>
+                    </tr>
+                    <tr class="odd:bg-gray-900/50 even:bg-gray-950">
+                        <th class="px-6 py-2 font-medium font-bold text-gray-300">Longitude</th>
+                        <td id="lon" class="px-6 py-2">Loading...</td>
+                    </tr>
+                    <tr class="odd:bg-gray-900/50 even:bg-gray-950">
+                        <th class="px-6 py-2 font-medium font-bold text-gray-300">Altitude</th>
+                        <td id="alt" class="px-6 py-2">Loading...</td>
+                    </tr>
+                    <tr class="odd:bg-gray-900/50 even:bg-gray-950">
+                        <th class="px-6 py-2 font-medium font-bold text-gray-300">Velocity</th>
+                        <td id="vel" class="px-6 py-2">Loading...</td>
+                    </tr>
+                    <tr class="odd:bg-gray-900/50 even:bg-gray-950">
+                        <td class="px-6 py-2 text-blue-800 text-sm overflow-x-auto" colspan="2" id="country">Loading...</td>
+                    </tr>
+                    <tr class="odd:bg-gray-900/50 even:bg-gray-950">
+                        <td class="px-6 py-2 text-yellow-600 text-sm" colspan="2" id="visibility">Loading...</td>
+                    </tr>
+                    <tr class="odd:bg-gray-900/50 even:bg-gray-950">
+                        <td class="px-6 py-2" colspan="2" id="visibility">
+                            <label for="follow-iss" class="text-sm text-gray-300">Follow ISS</label>&nbsp;
+                            <input class="accent-orange-600" type="checkbox" checked id="follow-iss"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <p>Showing ISS past 45 minutes path and future 45 minutes path</p> -->
+        </div>
+    </div>
 </body>
 </html>
